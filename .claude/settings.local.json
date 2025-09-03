@@ -8,7 +8,11 @@
       "Bash(cp:*)",
       "Bash(npm run dev:*)",
       "Bash(npm run build:*)",
-      "WebFetch(domain:murakamiyoshiyuki.github.io)"
+      "WebFetch(domain:murakamiyoshiyuki.github.io)",
+      "WebFetch(domain:sokudoku-olive.vercel.app)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
