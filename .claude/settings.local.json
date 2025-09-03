@@ -6,7 +6,9 @@
       "Bash(npm install:*)",
       "Bash(mkdir:*)",
       "Bash(cp:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:murakamiyoshiyuki.github.io)"
     ],
     "deny": [],
     "ask": []
