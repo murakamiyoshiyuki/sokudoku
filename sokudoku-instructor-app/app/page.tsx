@@ -149,7 +149,7 @@ export default function SokudokuInstructorApp() {
   };
 
   const playBellSound = () => {
-    const audio = new Audio('/audio/目覚まし時計のアラーム.mp3');
+    const audio = new Audio('/audio/alarm.mp3');
     audio.volume = timerBellVolume;
     audio.play().catch(e => console.log('Audio play failed:', e));
   };
@@ -558,7 +558,7 @@ zoom:時々お声をかけるので 4つの・・・。
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <audio ref={speedListeningRef} loop>
-        <source src="/audio/速聴音源.mp3" type="audio/mpeg" />
+        <source src="/audio/speed-listening.mp3" type="audio/mpeg" />
       </audio>
 
       {/* ヘッダー */}
