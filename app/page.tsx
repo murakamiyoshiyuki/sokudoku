@@ -572,45 +572,34 @@ zoom:時々お声をかけるので 4つの・・・。
       </header>
 
       {/* メインコンテンツ */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[calc(100vh-120px)]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[calc(100vh-140px)]">
         
         {/* 左カラム：レッスン台本 */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg shadow-md p-4 h-full flex flex-col">
-            <div className="flex items-center gap-2 mb-4">
-              <BookOpen className="w-5 h-5" />
-              <h2 className="text-lg font-semibold">レッスン台本</h2>
+          <div className="bg-white rounded-lg shadow-md p-3 h-full flex flex-col">
+            <div className="flex items-center gap-2 mb-3">
+              <BookOpen className="w-4 h-4" />
+              <h2 className="text-md font-semibold">レッスン台本</h2>
               <div className="ml-auto flex items-center gap-2">
                 <button
                   onClick={prevScript}
                   disabled={currentScriptIndex === 0}
-                  className="p-1 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="p-2 rounded-lg bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white shadow-md hover:shadow-lg transition-all disabled:cursor-not-allowed"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-6 h-6" />
                 </button>
-                <span className="text-sm font-medium">{sectionTitles[currentScriptIndex]} ({currentScriptIndex + 1}/{scriptSections.length})</span>
+                <span className="text-xs font-medium px-2">{sectionTitles[currentScriptIndex]} ({currentScriptIndex + 1}/{scriptSections.length})</span>
                 <button
                   onClick={nextScript}
                   disabled={currentScriptIndex === scriptSections.length - 1}
-                  className="p-1 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="p-2 rounded-lg bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white shadow-md hover:shadow-lg transition-all disabled:cursor-not-allowed"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-6 h-6" />
                 </button>
               </div>
             </div>
-            <div 
-              className="flex-1 overflow-y-auto focus:outline-none"
-              tabIndex={0}
-              onWheel={(e) => {
-                e.preventDefault();
-                if (e.deltaY > 0) {
-                  nextScript();
-                } else {
-                  prevScript();
-                }
-              }}
-            >
-              <div className="whitespace-pre-wrap text-sm leading-relaxed"
+            <div className="flex-1 overflow-y-auto focus:outline-none border border-gray-200 rounded-md p-3 bg-gray-50">
+              <div className="whitespace-pre-wrap text-xs leading-relaxed"
                    dangerouslySetInnerHTML={{
                      __html: formatScript(lessonScript[scriptSection as keyof typeof lessonScript] || '')
                    }}
@@ -620,19 +609,19 @@ zoom:時々お声をかけるので 4つの・・・。
         </div>
 
         {/* 右カラム：操作パネル */}
-        <div className="lg:col-span-1 space-y-4">
+        <div className="lg:col-span-1 space-y-3">
           
           {/* タイマー */}
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Clock className="w-5 h-5" />
-              <h3 className="font-semibold">タイマー</h3>
+          <div className="bg-white rounded-lg shadow-md p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <Clock className="w-4 h-4" />
+              <h3 className="text-md font-semibold">タイマー</h3>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-mono mb-4">
+              <div className="text-2xl font-mono mb-3">
                 {String(timer.minutes).padStart(2, '0')}:{String(timer.seconds).padStart(2, '0')}
               </div>
-              <div className="flex justify-center gap-1 mb-3">
+              <div className="flex justify-center gap-1 mb-2">
                 <button
                   onClick={() => setTimerPreset(600)}
                   className={`px-2 py-1 text-xs rounded ${timer.preset === 600 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
@@ -652,28 +641,28 @@ zoom:時々お声をかけるので 4つの・・・。
                   6秒
                 </button>
               </div>
-              <div className="flex justify-center gap-2 mb-3">
+              <div className="flex justify-center gap-1 mb-2">
                 <button
                   onClick={startTimer}
                   disabled={timer.isRunning}
-                  className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white px-4 py-2 rounded flex items-center gap-2"
+                  className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 text-white px-3 py-1 rounded flex items-center gap-1 text-sm"
                 >
-                  <Play className="w-4 h-4" />
+                  <Play className="w-3 h-3" />
                   開始
                 </button>
                 <button
                   onClick={pauseTimer}
                   disabled={!timer.isRunning}
-                  className="bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-300 text-white px-4 py-2 rounded flex items-center gap-2"
+                  className="bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-300 text-white px-3 py-1 rounded flex items-center gap-1 text-sm"
                 >
-                  <Pause className="w-4 h-4" />
-                  一時停止
+                  <Pause className="w-3 h-3" />
+                  停止
                 </button>
                 <button
                   onClick={stopTimer}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded flex items-center gap-2"
+                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded flex items-center gap-1 text-sm"
                 >
-                  <Square className="w-4 h-4" />
+                  <Square className="w-3 h-3" />
                   リセット
                 </button>
               </div>
@@ -694,20 +683,20 @@ zoom:時々お声をかけるので 4つの・・・。
           </div>
 
           {/* 速聴制御 */}
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Volume2 className="w-5 h-5" />
-              <h3 className="font-semibold">速聴制御</h3>
+          <div className="bg-white rounded-lg shadow-md p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <Volume2 className="w-4 h-4" />
+              <h3 className="text-md font-semibold">速聴制御</h3>
             </div>
             <button
               onClick={toggleSpeedListening}
-              className={`w-full mb-3 px-4 py-2 rounded flex items-center justify-center gap-2 ${
+              className={`w-full mb-2 px-3 py-2 rounded flex items-center justify-center gap-1 text-sm ${
                 isSpeedListeningPlaying 
                   ? 'bg-red-500 hover:bg-red-600 text-white' 
                   : 'bg-blue-500 hover:bg-blue-600 text-white'
               }`}
             >
-              {isSpeedListeningPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+              {isSpeedListeningPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
               {isSpeedListeningPlaying ? '停止' : '再生'}
             </button>
             <div>
@@ -726,22 +715,22 @@ zoom:時々お声をかけるので 4つの・・・。
           </div>
 
           {/* AIトークテーマ生成 */}
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <MessageSquare className="w-5 h-5" />
-              <h3 className="font-semibold">トークテーマ</h3>
+          <div className="bg-white rounded-lg shadow-md p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <MessageSquare className="w-4 h-4" />
+              <h3 className="text-md font-semibold">トークテーマ</h3>
             </div>
             <button
               onClick={generateAITopics}
-              className="w-full mb-3 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded"
+              className="w-full mb-2 bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded text-sm"
             >
               5つのテーマを生成
             </button>
             {aiTopics.length > 0 && (
-              <div className="space-y-2">
+              <div className="space-y-1 max-h-32 overflow-y-auto">
                 {aiTopics.map((topic, index) => (
                   <div key={index} className="bg-purple-50 border border-purple-200 rounded p-2">
-                    <p className="text-sm font-medium text-purple-800">{index + 1}. {topic}</p>
+                    <p className="text-xs font-medium text-purple-800">{index + 1}. {topic}</p>
                   </div>
                 ))}
               </div>
@@ -749,21 +738,21 @@ zoom:時々お声をかけるので 4つの・・・。
           </div>
 
           {/* 生徒管理 */}
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Users className="w-5 h-5" />
-              <h3 className="font-semibold">生徒一覧</h3>
+          <div className="bg-white rounded-lg shadow-md p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <Users className="w-4 h-4" />
+              <h3 className="text-md font-semibold">生徒一覧</h3>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1 max-h-40 overflow-y-auto">
               {students.map((student) => (
                 <div key={student.id} className="flex items-center gap-2">
-                  <span className="text-sm w-4">{student.id}.</span>
+                  <span className="text-xs w-4">{student.id}.</span>
                   <input
                     type="text"
                     placeholder="生徒名"
                     value={student.name}
                     onChange={(e) => updateStudentName(student.id, e.target.value)}
-                    className="flex-1 px-2 py-1 border border-gray-300 rounded text-sm"
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded text-xs"
                   />
                 </div>
               ))}

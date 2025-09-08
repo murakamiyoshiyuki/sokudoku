@@ -12,7 +12,9 @@
       "WebFetch(domain:sokudoku-olive.vercel.app)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(taskkill:*)",
+      "Bash(npx kill-port:*)"
     ],
     "deny": [],
     "ask": []
